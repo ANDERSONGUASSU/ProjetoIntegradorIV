@@ -1,0 +1,163 @@
+<section id="contact" class="contact section-bg">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <form action="result" class="php-email-form p-5">
+                {% csrf_token %}
+
+                <div class="row">
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-person-walking-luggage position-absolute p-2 "></i>
+                        <input type="number" name="no_of_adults"
+                            class="form-control form-control-sm border-3 text-center " id="no_of_adults" min="1"
+                            max="5" placeholder="Nº de Adultos" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-child-reaching position-absolute p-2"></i>
+                        <input type="number" name="no_of_children"
+                            class="form-control form-control-sm border-3 text-center" id="no_of_children"
+                            min="0" max="5" placeholder="Nº de Crianças" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-utensils position-absolute p-2"></i>
+                        <select name="type_of_meal_plan"
+                            class="form-control form-control-sm border-3 text-center" id="type_of_meal_plan"
+                            required>
+                            <option value="" disabled selected>Plano Alimentar</option>
+                            <option value="Meal Plan 1">plano 1</option>
+                            <option value="Meal Plan 2">plano 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-cloud-moon position-absolute p-2"></i>
+                        <input type="number" name="no_of_weekend_nights"
+                            class="form-control form-control-sm border-3 text-center" id="no_of_weekend_nights"
+                            min="1" max="5" placeholder="Nº de noites no fim de semana" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-cloud-moon position-absolute p-2"></i>
+                        <input type="number" name="no_of_week_nights"
+                            class="form-control form-control-sm border-3 text-center" id="no_of_week_nights"
+                            min="1" max="5" placeholder="Nº de noites de semana" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-car position-absolute p-2"></i>
+                        <select name="required_car_parking_space"
+                            class="form-control form-control-sm border-3 text-center"
+                            id="required_car_parking_space" required>
+                            <option value="" disabled selected>Estacionamento</option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-user-xmark position-absolute p-2"></i>
+                        <input type="number" name="no_of_previous_cancellations"
+                            class="form-control form-control-sm border-3 text-center"
+                            id="no_of_previous_cancellations" min="0" max="5"
+                            placeholder="Reservas previas canceladas" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-user-check position-absolute p-2"></i>
+                        <input type="number" name="no_of_previous_bookings_not_canceled"
+                            class="form-control form-control-sm border-3 text-center"
+                            id="no_of_previous_bookings_not_canceled" min="0" max="5"
+                            placeholder="Reservas previas não canceladas" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-4">
+                        <i class="fa-solid fa-lg fa-brazilian-real-sign position-absolute p-2"></i>
+                        <input type="Text" name="avg_price_per_room"
+                            class="form-control form-control-sm border-3 text-center" id="avg_price_per_room"
+                            onKeyUp="mascaraMoeda(this, event)" value="" placeholder="Valor da reserva"
+                            required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-bed position-absolute p-2"></i>
+                        <select name="room_type_reserved"
+                            class="form-control form-control-sm border-3 text-center" id="room_type_reserved"
+                            required>
+                            <option value="" disabled selected>Quarto</option>
+                            <option value="Room_Type 1">quarto 1</option>
+                            <option value="Room_Type 2">quarto 2</option>
+                            <option value="Room_Type 3">quarto 3</option>
+                            <option value="Room_Type 4">quarto 4</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-check-to-slot position-absolute p-2"></i>
+                        <select name="market_segment_type"
+                            class="form-control form-control-sm border-3 text-center" id="market_segment_type"
+                            required>
+                            <option value="" disabled selected>Tipo de reserva</option>
+                            <option value="Online">Online</option>
+                            <option value="Offline">Offline</option>
+                            <option value="Corporate">Corporativa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-repeat position-absolute p-2"></i>
+                        <select name="repeated_guest" class="form-control form-control-sm border-3 text-center"
+                            id="repeated_guest" required>
+                            <option value="" disabled selected>Hospede recorrente</option>
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-clipboard-list position-absolute p-2"></i>
+                        <input type="number" name="no_of_special_requests"
+                            class="form-control form-control-sm border-3 text-center"
+                            id="no_of_special_requests" min="0" max="5" placeholder="Nº de pedidos especiais"
+                            required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-calendar-check position-absolute p-2"></i>
+                        <input type="number" name="lead_time"
+                            class="form-control form-control-sm border-3 text-center" id="lead_time"
+                            placeholder="Nº de dias antes do check-in" required min="1">
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-calendar position-absolute p-2"></i>
+                        <input type="number" name="arrival_year"
+                            class="form-control form-control-sm border-3 text-center" id="arrival_year"
+                            min="2017" max="2018" placeholder="Ano de chegada" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-calendar-week position-absolute p-2"></i>
+                        <input type="number" name="arrival_month"
+                            class="form-control form-control-sm border-3 text-center" id="arrival_month" min="1"
+                            max="12" placeholder="Mês de chegada" required>
+                    </div>
+
+                    <div class="form-group p-3 col-md-3">
+                        <i class="fa-solid fa-lg fa-calendar-day position-absolute p-2"></i>
+                        <input type="number" name="arrival_date"
+                            class="form-control form-control-sm border-3 text-center" id="arrival_date" min="1"
+                            max="31" placeholder="Dia de chegada" required>
+                    </div>
+
+                    <div class="text-center">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</main>
